@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View, Modal } from "react-native";
+import { StyleSheet, Text, View, Modal, Dimensions } from "react-native";
 
-export default ({ visibility }) => {
+export default ({ children, visibility }) => {
   return (
     <Modal transparent={true} animationType={"slide"} visible={visibility}>
       <View style={styles.center}>
