@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Modal, Dimensions } from "react-native";
+import { StyleSheet, View, Modal, Dimensions } from "react-native";
 
 export default ({ children, visibility }) => {
   return (

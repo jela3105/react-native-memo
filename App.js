@@ -1,14 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Modal } from "./components";
+import { Modal, Table } from "./components";
 
 export default function App() {
+  const [cardsList, setCardsList] = useState([
+    {
+      key: 0,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+  ]);
+
+  const [initialModalVisibility, setInitialModalVisibility] = useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Table cardsList={cardsList} />
       <StatusBar style="auto" />
-      <Modal>
+      <Modal visibility={initialModalVisibility}>
         <Text>Open up App.js to start working on your app!</Text>
       </Modal>
     </View>
@@ -18,8 +27,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#111111",
+  },
+  text: {
+    color: "#EEEEEE",
+    fontSize: 16,
   },
 });
