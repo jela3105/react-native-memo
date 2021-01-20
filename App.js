@@ -8,6 +8,12 @@ export default function App() {
   const [initialModalVisibility, setInitialModalVisibility] = useState(false);
   const [cards, setCards] = useState([]);
 
+  useEffect(() => {
+    cardsFile.sort(() => Math.random() - 0.5);
+    console.log(typeof cardsFile);
+    setCards(cardsFile);
+  });
+
   const shortCards = (cards) => {
     return [
       {
@@ -16,10 +22,6 @@ export default function App() {
       },
     ];
   };
-
-  useEffect(() => {
-    setCards(cardsFile);
-  }, []);
 
   const numColumns = 4;
 

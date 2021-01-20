@@ -13,7 +13,7 @@ const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
 export default ({ cardsList, numColumns }) => {
-  cardsList.map((x) => console.log(typeof x.key));
+  //cardsList.map((x) => console.log(typeof x.show));
   return (
     <FlatList
       data={cardsList}
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     width: 80,
     flex: 1,
     margin: 8,
-    borderRadius: 5,
+    borderRadius: 6,
   },
   title: { color: "#000000" },
   photo: {
-    width: 70,
-    height: 70,
+    width: "100%",
+    height: "100%",
   },
 });
 //{ uri: item.image }
