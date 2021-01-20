@@ -1,35 +1,36 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Modal, Table } from "./components";
+import { Modal, Cards } from "./components";
 import cardsFile from "./assets/cards";
 
 export default function App() {
-  const [initialModalVisibility, setInitialModalVisibility] = useState(false);
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    cardsFile.sort(() => Math.random() - 0.5);
-    console.log(typeof cardsFile);
-    setCards(cardsFile);
-  });
-
-  const shortCards = (cards) => {
-    return [
-      {
-        key: 3,
-        image: "https://image.flaticon.com/icons/png/512/919/919826.png",
-      },
-    ];
-  };
-
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [cards, setCards] = useState(cardsFile.sort(() => Math.random() - 0.5));
   const numColumns = 4;
+
+  const handleSelectedCard = (item) => {
+    console.log(cards);
+    const modifiedCards = cards.map((x) => {
+      if (x.id == item.id) {
+        x.show = "true";
+        console.log(`el modificado es ${x}`);
+      }
+      return x;
+    });
+    console.log(modifiedCards);
+    setCards(modifiedCards);
+  };
 
   return (
     <View style={styles.container}>
-      <Table cardsList={cards} numColumns={numColumns} />
+      <Cards
+        cardsList={cards}
+        numColumns={numColumns}
+        handleSelectedCard={handleSelectedCard}
+      />
       <StatusBar style="auto" />
-      <Modal visibility={initialModalVisibility}>
+      <Modal visibility={modalVisibility}>
         <Text>Open up App.js to start working on your app!</Text>
       </Modal>
     </View>
