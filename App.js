@@ -21,6 +21,102 @@ export default function App() {
       key: 3,
       image: "https://image.flaticon.com/icons/png/512/919/919826.png",
     },
+    {
+      key: 4,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 5,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 6,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 7,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 0,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 1,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 2,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 3,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 4,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 5,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 6,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 7,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 0,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 1,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 2,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 3,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 4,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 5,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 6,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 7,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 0,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 1,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 2,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
+    {
+      key: 3,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    },
   ]);
 
   const [initialModalVisibility, setInitialModalVisibility] = useState(false);
@@ -40,7 +136,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 80,
     backgroundColor: "#111111",
   },
   text: {

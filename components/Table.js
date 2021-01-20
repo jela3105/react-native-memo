@@ -1,8 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Text, Button, FlatList, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  FlatList,
+  Image,
+  Dimensions,
+} from "react-native";
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 export default ({ cardsList, numColumns }) => {
-  console.log(cardsList);
   return (
     <FlatList
       data={cardsList}
@@ -26,11 +36,11 @@ const styles = StyleSheet.create({
     width: 80,
     flex: 1,
     margin: 8,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   title: { color: "#000000" },
   photo: {
-    height: 80,
     width: 80,
+    height: 80,
   },
 });
