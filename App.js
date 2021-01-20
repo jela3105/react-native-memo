@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Modal, Table } from "./components";
 
@@ -120,6 +120,24 @@ export default function App() {
   ]);
 
   const [initialModalVisibility, setInitialModalVisibility] = useState(false);
+  const [cards, setCards] = useState([]);
+
+  const shortCards = (cards) => {
+    console.log(cards);
+    return {
+      key: 3,
+      image: "https://image.flaticon.com/icons/png/512/919/919826.png",
+    };
+  };
+
+  useEffect(() => {
+    fetch("./assets/cards.json")
+      .then((response) => response.json)
+      .then((cards) => {
+        setCards(shortCards(cards));
+      });
+  }, []);
+
   const numColumns = 4;
 
   return (
