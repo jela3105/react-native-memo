@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Modal, Cards, Ranking } from "./components";
 import cardsFile from "./assets/cards";
+import ranking from "./assets/ranking";
+let fs = require("react-native-fs");
 
 let selectedCards = new Array();
 let pairCardsFound = 0;
@@ -51,6 +53,7 @@ export default function App() {
         pairCardsFound++;
         if (pairCardsFound === 14) {
           setModalVisibility(true);
+          saveRanking();
         }
         selectedCards = [];
       } else {
@@ -87,6 +90,27 @@ export default function App() {
     setInterval(() => {
       time++;
     }, 1000);
+  };
+
+  const saveRanking = () => {
+    ranking.map((x) => {
+      x.lastplay = false;
+    });
+    const date = new Date();
+    const newRankingData = {
+      date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
+      time: time,
+      mistakes: pairCardsFail,
+      lastplay: true,
+    };
+    ranking.push(newRankingData);
+    ranking.sort((a, b) => a.time - b.time);
+    fs.writeFile("../assets/ranking.json", JSON.stringify(ranking), (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log("JSON data is saved.");
+    });
   };
 
   const showMessage = (message) => {

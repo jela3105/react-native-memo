@@ -10,18 +10,20 @@ export default () => {
       </View>
       <View style={styles.categories}>
         <Text style={styles.categoriesText}>No.</Text>
-        <Text style={styles.categoriesText}>Fecha</Text>
         <Text style={styles.categoriesText}>Tiempo</Text>
+        <Text style={styles.categoriesText}>Fecha</Text>
         <Text style={styles.categoriesText}>Errores</Text>
       </View>
       <View style={styles.list}>
         <FlatList
           data={ranking}
           renderItem={({ item }) => (
-            <View style={styles.item}>
+            <View
+              style={item.lastplay == true ? styles.itemLastPlay : styles.item}
+            >
               <Text style={styles.itemText}>{ranking.indexOf(item) + 1}</Text>
-              <Text style={styles.itemText}>{item.date}</Text>
               <Text style={styles.itemText}>{item.time}</Text>
+              <Text style={styles.itemText}>{item.date}</Text>
               <Text style={styles.itemText}>{item.mistakes}</Text>
             </View>
           )}
@@ -41,6 +43,13 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height - 300,
     backgroundColor: "#EEEEEE",
   },
+  itemLastPlay: {
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    flexDirection: "row",
+    backgroundColor: "#ADD8E6",
+    padding: 20,
+  },
   item: {
     borderBottomWidth: 1,
     borderColor: "#ccc",
@@ -55,7 +64,6 @@ const styles = StyleSheet.create({
   categories: {
     height: 50,
     flexDirection: "row",
-    padding: 1,
   },
   categoriesText: {
     marginRight: 10,
