@@ -17,7 +17,15 @@ export default () => {
       <View style={styles.list}>
         <FlatList
           data={ranking}
-          renderItem={({ item }) => <View style={styles.item}></View>}
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+              <Text style={styles.itemText}>{ranking.indexOf(item) + 1}</Text>
+              <Text style={styles.itemText}>{item.date}</Text>
+              <Text style={styles.itemText}>{item.time}</Text>
+              <Text style={styles.itemText}>{item.mistakes}</Text>
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </>
@@ -33,6 +41,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height - 300,
     backgroundColor: "#EEEEEE",
   },
+  item: {
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    flexDirection: "row",
+    padding: 20,
+  },
   headerText: {
     color: "#000000",
     fontSize: 40,
@@ -41,10 +55,15 @@ const styles = StyleSheet.create({
   categories: {
     height: 50,
     flexDirection: "row",
-    padding: 2,
+    padding: 1,
   },
   categoriesText: {
-    margin: 10,
+    marginRight: 10,
+    marginLeft: 10,
     fontSize: 18,
+  },
+  itemText: {
+    fontSize: 12,
+    marginRight: 38,
   },
 });
