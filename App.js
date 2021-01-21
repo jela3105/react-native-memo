@@ -7,15 +7,19 @@ import {
   ToastAndroid,
   Platform,
   AlertIOS,
+  TouchableOpacity,
 } from "react-native";
 import { Modal, Cards } from "./components";
 import cardsFile from "./assets/cards";
 
 let selectedCards = new Array();
+let pairCardsFound = 0;
+let pairCardsFail = 0;
+let time = 0;
 
 export default function App() {
-  const [modalVisibility, setModalVisibility] = useState(false);
-  const [cards, setCards] = useState(cardsFile.sort(() => Math.random() - 0.5));
+  const [modalVisibility, setModalVisibility] = useState(true);
+  const [cards, setCards] = useState([]);
   const numColumns = 4;
 
   const handleSelectedCard = (item) => {
@@ -43,9 +47,14 @@ export default function App() {
   const validateCards = () => {
     if (selectedCards.length == 2) {
       if (selectedCards[0].image === selectedCards[1].image) {
-        showMessage("Felicidades, son iguales");
+        showMessage("Son iguales");
+        pairCardsFound++;
+        if (pairCardsFound === 14) {
+          setModalVisibility(true);
+        }
         selectedCards = [];
       } else {
+        pairCardsFail++;
         hideCards();
       }
     }
@@ -61,9 +70,20 @@ export default function App() {
           return x;
         })
       );
-      console.log("no son iguales :c");
+      showMessage("No son iguales");
       selectedCards = [];
     }, 800);
+  };
+
+  const startGame = () => {
+    setModalVisibility(false);
+    setCards(cardsFile.sort(() => Math.random() - 0.5));
+    cards.map((x) => {
+      x.show = "false";
+    });
+    setInterval(() => {
+      time++;
+    }, 1000);
   };
 
   const showMessage = (message) => {
@@ -83,7 +103,12 @@ export default function App() {
       />
       <StatusBar style="auto" />
       <Modal visibility={modalVisibility}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Contrads you found the {pairCardsFound} pairs of cards</Text>
+        <Text>You fail {pairCardsFail} times</Text>
+        <Text>Time {time} </Text>
+        <TouchableOpacity style={styles.start} onPress={startGame}>
+          <Text>Start</Text>
+        </TouchableOpacity>
       </Modal>
     </View>
   );
@@ -98,5 +123,13 @@ const styles = StyleSheet.create({
   text: {
     color: "#EEEEEE",
     fontSize: 16,
+  },
+  start: {
+    backgroundColor: "#0000ff",
+    flex: 2,
+    width: 70,
+    borderRadius: 5,
+    padding: 10,
+    marginLeft: 5,
   },
 });
