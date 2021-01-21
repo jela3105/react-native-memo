@@ -10,8 +10,8 @@ export default () => {
       </View>
       <View style={styles.categories}>
         <Text style={styles.categoriesText}>No.</Text>
-        <Text style={styles.categoriesText}>Tiempo</Text>
-        <Text style={styles.categoriesText}>Fecha</Text>
+        <Text style={styles.categoriesText}>Segundos</Text>
+        <Text style={styles.categoriesText}>Hora</Text>
         <Text style={styles.categoriesText}>Errores</Text>
       </View>
       <View style={styles.list}>
@@ -54,7 +54,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#ccc",
     flexDirection: "row",
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 30,
   },
   headerText: {
     color: "#000000",
@@ -72,6 +74,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 12,
-    marginRight: 38,
+    marginRight: 50,
   },
 });

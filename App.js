@@ -12,7 +12,6 @@ import {
 import { Modal, Cards, Ranking } from "./components";
 import cardsFile from "./assets/cards";
 import ranking from "./assets/ranking";
-let fs = require("react-native-fs");
 
 let selectedCards = new Array();
 let pairCardsFound = 0;
@@ -49,7 +48,6 @@ export default function App() {
   const validateCards = () => {
     if (selectedCards.length == 2) {
       if (selectedCards[0].image === selectedCards[1].image) {
-        showMessage("Son iguales");
         pairCardsFound++;
         if (pairCardsFound === 14) {
           setModalVisibility(true);
@@ -64,6 +62,7 @@ export default function App() {
   };
 
   const hideCards = () => {
+    showMessage("No son iguales");
     setTimeout(() => {
       setCards(
         cards.map((x) => {
@@ -73,9 +72,8 @@ export default function App() {
           return x;
         })
       );
-      showMessage("No son iguales");
       selectedCards = [];
-    }, 800);
+    }, 1500);
   };
 
   const startGame = () => {
@@ -105,12 +103,6 @@ export default function App() {
     };
     ranking.push(newRankingData);
     ranking.sort((a, b) => a.time - b.time);
-    fs.writeFile("../assets/ranking.json", JSON.stringify(ranking), (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log("JSON data is saved.");
-    });
   };
 
   const showMessage = (message) => {
@@ -130,11 +122,6 @@ export default function App() {
       />
       <StatusBar style="auto" />
       <Modal visibility={modalVisibility}>
-        {/*
-	 <Text>Contrads you found the {pairCardsFound} pairs of cards</Text>
-        <Text>You fail {pairCardsFail} times</Text>
-        <Text>Time {time} </Text>   
-	    * */}
         <Ranking />
         <TouchableOpacity style={styles.start} onPress={startGame}>
           <Text style={styles.text}>Presiona aquí para jugar</Text>
