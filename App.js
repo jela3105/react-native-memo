@@ -9,7 +9,7 @@ import {
   AlertIOS,
   TouchableOpacity,
 } from "react-native";
-import { Modal, Cards } from "./components";
+import { Modal, Cards, Ranking } from "./components";
 import cardsFile from "./assets/cards";
 
 let selectedCards = new Array();
@@ -76,6 +76,9 @@ export default function App() {
   };
 
   const startGame = () => {
+    pairCardsFound = 0;
+    pairCardsFail = 0;
+    time = 0;
     setModalVisibility(false);
     setCards(cardsFile.sort(() => Math.random() - 0.5));
     cards.map((x) => {
@@ -103,11 +106,14 @@ export default function App() {
       />
       <StatusBar style="auto" />
       <Modal visibility={modalVisibility}>
-        <Text>Contrads you found the {pairCardsFound} pairs of cards</Text>
+        {/*
+	 <Text>Contrads you found the {pairCardsFound} pairs of cards</Text>
         <Text>You fail {pairCardsFail} times</Text>
-        <Text>Time {time} </Text>
+        <Text>Time {time} </Text>   
+	    * */}
+        <Ranking />
         <TouchableOpacity style={styles.start} onPress={startGame}>
-          <Text>Start</Text>
+          <Text style={styles.text}>Presiona aquí para jugar</Text>
         </TouchableOpacity>
       </Modal>
     </View>
@@ -122,14 +128,14 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#EEEEEE",
-    fontSize: 16,
+    fontSize: 20,
+    fontWeight: "bold",
   },
   start: {
-    backgroundColor: "#0000ff",
-    flex: 2,
-    width: 70,
+    backgroundColor: "#008f39",
     borderRadius: 5,
-    padding: 10,
-    marginLeft: 5,
+    padding: 20,
+    margin: 10,
+    alignItems: "center",
   },
 });
