@@ -8,7 +8,9 @@ import {
   Platform,
   AlertIOS,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
+import { Appbar } from "react-native-paper";
 import { Modal, Cards, Ranking } from "./components";
 import cardsFile from "./assets/cards";
 import ranking from "./assets/ranking";
@@ -115,6 +117,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Appbar.Header style={styles.header}>
+        <Appbar.Content style={styles.title} title="Memorama" />
+        <Appbar.Content style={styles.time} title="Tiempo" subtitle="200" />
+        <Appbar.Content style={styles.mistake} title="Errores" subtitle="100" />
+      </Appbar.Header>
       <Cards
         cardsList={cards}
         numColumns={numColumns}
@@ -134,7 +141,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 80,
     backgroundColor: "#111111",
   },
   text: {
@@ -148,5 +154,12 @@ const styles = StyleSheet.create({
     padding: 20,
     margin: 10,
     alignItems: "center",
+  },
+  header: {
+    height: 60,
+    backgroundColor: "#222222",
+  },
+  title: {
+    flex: 2,
   },
 });
