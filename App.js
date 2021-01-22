@@ -8,10 +8,8 @@ import {
   Platform,
   AlertIOS,
   TouchableOpacity,
-  SafeAreaView,
 } from "react-native";
-import { Appbar } from "react-native-paper";
-import { Modal, Cards, Ranking } from "./components";
+import { Modal, Cards, Ranking, AppBar } from "./components";
 import cardsFile from "./assets/cards";
 import ranking from "./assets/ranking";
 
@@ -84,6 +82,7 @@ export default function App() {
   const startGame = () => {
     pairCardsFound = 0;
     pairCardsFail = 0;
+    setMistakes(pairCardsFail);
     time = 0;
     setModalVisibility(false);
     setCards(cardsFile.sort(() => Math.random() - 0.5));
@@ -121,15 +120,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Appbar.Header style={styles.header}>
-        <Appbar.Content style={styles.title} title="Memorama" />
-        <Appbar.Content style={styles.time} title="Tiempo" subtitle={timer} />
-        <Appbar.Content
-          style={styles.mistake}
-          title="Errores"
-          subtitle={mistakes}
-        />
-      </Appbar.Header>
+      <AppBar timer={timer} mistakes={mistakes} />
       <Cards
         cardsList={cards}
         numColumns={numColumns}
