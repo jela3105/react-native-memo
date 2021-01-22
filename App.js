@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -96,7 +96,7 @@ export default function App() {
     });
     const date = new Date();
     const newRankingData = {
-      date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
+      date: `${date.getHours()}:${date.getMinutes()}`,
       time: time,
       mistakes: pairCardsFail,
       lastplay: true,
