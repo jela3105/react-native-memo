@@ -23,6 +23,8 @@ let time = 0;
 export default function App() {
   const [modalVisibility, setModalVisibility] = useState(true);
   const [cards, setCards] = useState([]);
+  const [timer, setTimer] = useState(time);
+  const [mistakes, setMistakes] = useState(pairCardsFail);
   const numColumns = 4;
 
   const handleSelectedCard = (item) => {
@@ -58,6 +60,7 @@ export default function App() {
         selectedCards = [];
       } else {
         pairCardsFail++;
+        setMistakes(pairCardsFail);
         hideCards();
       }
     }
@@ -89,6 +92,7 @@ export default function App() {
     });
     setInterval(() => {
       time++;
+      setTimer(time);
     }, 1000);
   };
 
@@ -119,8 +123,12 @@ export default function App() {
     <View style={styles.container}>
       <Appbar.Header style={styles.header}>
         <Appbar.Content style={styles.title} title="Memorama" />
-        <Appbar.Content style={styles.time} title="Tiempo" subtitle="200" />
-        <Appbar.Content style={styles.mistake} title="Errores" subtitle="100" />
+        <Appbar.Content style={styles.time} title="Tiempo" subtitle={timer} />
+        <Appbar.Content
+          style={styles.mistake}
+          title="Errores"
+          subtitle={mistakes}
+        />
       </Appbar.Header>
       <Cards
         cardsList={cards}
