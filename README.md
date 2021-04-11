@@ -14,4 +14,6 @@ Memorama usando React Native
 
 ## Preview
 ![MemoPreview 1](https://user-images.githubusercontent.com/46289656/105458214-bf7fe800-5c4d-11eb-88e1-336b8d81c2be.gif)
+
+
 ![MemoPreview 2](https://user-images.githubusercontent.com/46289656/105458192-b4c55300-5c4d-11eb-8eff-2deda538e7ec.gif)
